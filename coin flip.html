@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flip</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            display: inline-block;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            
+        }
+        .result {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .result {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .count {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Coin Flip Game</h1>
+        <div class="result" id="result">Click "Flip Coin" to start</div>
+        <div class="count">
+            Heads: <span id="heads-count">0</span><br>
+            Tails: <span id="tails-count">0</span>
+        </div>
+        <button onclick="flipCoin()">Flip Coin</button>
+        <button onclick="resetCounts()">Reset</button>
+    </div>
+
+    <script>
+        let headsCount = 0;
+        let tailsCount = 0;
+
+        function flipCoin() {
+            const outcome = Math.random() < 0.5 ? "Heads" : "Tails";
+            const resultElement = document.getElementById('result');
+            const headsCountElement = document.getElementById('heads-count');
+            const tailsCountElement = document.getElementById('tails-count');
+
+            if (outcome === "Heads") {
+                headsCount++;
+                resultElement.textContent = "Heads";
+            } else {
+                tailsCount++;
+                resultElement.textContent = "Tails";
+            }
+
+            headsCountElement.textContent = headsCount;
+            tailsCountElement.textContent = tailsCount;
+        }
+
+        function resetCounts() {
+            headsCount = 0;
+            tailsCount = 0;
+            document.getElementById('heads-count').textContent = headsCount;
+            document.getElementById('tails-count').textContent = tailsCount;
+            document.getElementById('result').textContent = "Click 'Flip Coin' to start";
+        }
+        </script>
+</body>
+</html>
